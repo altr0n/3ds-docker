@@ -22,4 +22,8 @@ Docker container for building homebrew applications for the Nintendo 3DS
 
 ## Running the container
 * run `sudo ./run_container.sh`
+
+##Usability 
+* Use the export folder to copy things out of the container when you are done working
+
  
