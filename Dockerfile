@@ -62,6 +62,63 @@ RUN export DEVKITARM=/opt/devkitpro/devkitARM
 RUN export PATH=$PATH:/opt/devkitpro/devkitARM
 RUN sudo -E make install
 
+#Get most updated version of citro3d
+WORKDIR /home/user/tools
+RUN git clone https://github.com/fincs/citro3d.git
+WORKDIR /home/user/tools/citro3d
+RUN make
+RUN export DEVKITPRO=/opt/devkitpro
+RUN export DEVKITARM=/opt/devkitpro/devkitARM
+RUN export PATH=$PATH:/opt/devkitpro/devkitARM
+RUN sudo -E make install
+
+
+#Get most updated version of portlibs
+WORKDIR /home/user/tools
+RUN git clone https://github.com/xerpi/3ds_portlibs.git
+WORKDIR /home/user/tools/3ds_portlibs
+RUN sudo -E make all
+RUN export DEVKITPRO=/opt/devkitpro
+RUN export DEVKITARM=/opt/devkitpro/devkitARM
+RUN export PATH=$PATH:/opt/devkitpro/devkitARM
+RUN sudo -E make install-zlib
+RUN sudo -E make install
+
+
+
+#Get most updated version of sf2dlib
+WORKDIR /home/user/tools
+RUN git clone https://github.com/xerpi/sf2dlib.git
+WORKDIR /home/user/tools/sf2dlib/libsf2d
+RUN make
+RUN export DEVKITPRO=/opt/devkitpro
+RUN export DEVKITARM=/opt/devkitpro/devkitARM
+RUN export PATH=$PATH:/opt/devkitpro/devkitARM
+RUN sudo -E make install
+
+
+#Get most updated version of sftdlib
+WORKDIR /home/user/tools
+RUN git clone https://github.com/xerpi/sftdlib.git
+WORKDIR /home/user/tools/sftdlib/libsftd
+RUN make
+RUN export DEVKITPRO=/opt/devkitpro
+RUN export DEVKITARM=/opt/devkitpro/devkitARM
+RUN export PATH=$PATH:/opt/devkitpro/devkitARM
+RUN sudo -E make install
+
+
+#Get most updated version of sfillib
+WORKDIR /home/user/tools
+RUN git clone https://github.com/xerpi/sfillib.git
+WORKDIR /home/user/tools/sfillib/libsfil
+RUN make
+RUN export DEVKITPRO=/opt/devkitpro
+RUN export DEVKITARM=/opt/devkitpro/devkitARM
+RUN export PATH=$PATH:/opt/devkitpro/devkitARM
+RUN sudo -E make install
+
+
 #Get Luma3DS and build
 WORKDIR /home/user/tools
 RUN git clone --recursive https://github.com/AuroraWright/Luma3DS.git
@@ -83,6 +140,11 @@ RUN make
 #Get homemenu hax
 WORKDIR /home/user/tools
 RUN git clone https://github.com/yellows8/3ds_homemenuhax.git
+
+#Get homemenu PKSM
+WORKDIR /home/user/tools
+RUN git clone https://github.com/BernardoGiordano/PKSM.git
+
 
 #Setup VIM configurations
 RUN echo "imap jj <Esc>" >> ~/.vimrc
